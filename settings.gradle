@@ -6,4 +6,4 @@
 */
 
 rootProject.name = 'okafka'
-include(':clients', 'examples:consumer', 'examples:producer')
+include(':clients', 'examples:consumer', 'examples:producer', ':connect')

@@ -5,7 +5,7 @@
     <groupId>com.oracle.database.messaging</groupId>
     <artifactId>okafka</artifactId>
     <version>0.8</version>
-    
+
     <packaging>jar</packaging>
 
     <!-- Start of fields requiring product specific values -->
