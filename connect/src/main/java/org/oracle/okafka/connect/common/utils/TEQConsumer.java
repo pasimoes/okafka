@@ -62,8 +62,7 @@ public class TEQConsumer implements Closeable {
                 System.out.println(message.getText());
                 log.trace("{} Received message with id='{}'", this, message.getJMSMessageID());
                 String messageID = message.getJMSMessageID();
-                return new SourceRecord(PARTITIONS, OFFSETS, this.config.topic, null, this.keySchema, key, this.valueSchema, value, message, messageID, sessionId);
-
+                return new SourceRecord(null, null, this.config.topic, null, this.keySchema, key, this.valueSchema, value, message, messageID, sessionId);
 
             } else {
                 System.out.println();
