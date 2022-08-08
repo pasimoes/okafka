@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.jms.JMSException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,27 +46,29 @@ public class TEQSourceTask extends SourceTask {
         log.info("[{}] Starting Oracle TEQ Connect Task [{}] poll.", Thread.currentThread().getId(), this.taskId);
         //TODO write code for retry/pending commit
 
-        List<SourceRecord> records = null;
+        List<SourceRecord> records = new ArrayList<>();
 
-        receive();
+        records.add(receive());
         //JmsSourceRecord record = (JmsSourceRecord)this.retryPolicy.call("receive JMS message", () -> receive(this.duration));
 
-        return null;
+        return records;
     }
 
     protected SourceRecord receive() {
         log.info("[{}] receiving TEQ Messages.", Thread.currentThread().getId());
+        SourceRecord sourceRecord = null;
         try {
             this.consumer.connect();
-            this.consumer.receive();
+            sourceRecord = this.consumer.receive();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (JMSException e) {
             throw new RuntimeException(e);
         } catch (AQException e) {
             throw new RuntimeException(e);
+        } finally {
+          return sourceRecord;
         }
-        return null;
     }
 
     @Override
