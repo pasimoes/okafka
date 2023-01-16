@@ -1,0 +1,48 @@
+baseURL = 'https://oracle.github.io/okafka/quickstart/'
+languageCode = 'en-us'
+title = 'Kafka Java Client for Oracle TxEventQ Quick Start'
+theme = "hugo-geekdoc"
+
+pluralizeListTitles = false
+
+# Geekdoc required configuration
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+disablePathToLower = true
+
+# Language configuration
+defaultContentLanguage = "en"
+
+[languages.en]
+languageName = "English"
+contentDir = "content/en"
+weight = 10
+
+[languages.es]
+languageName = "Spanish"
+contentDir = "content/es"
+weight = 20
+
+# Required if you want to render robots.txt template
+enableRobotsTXT = true
+
+# analytics
+# googleAnalytics = "G-Z0MVCJ4T39"
+
+# menu configuration
+[params]
+  geekdocMenuBundle = true
+  geekdocCollapseAllSections = true
+  geekdocLegalNotice = "https://oss.oracle.com/licenses/upl/"  
+
+# Needed for mermaid shortcodes
+[markup]
+  [markup.goldmark.renderer]
+    # Needed for mermaid shortcode
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 9
+
+[taxonomies]
+   tag = "tags"
